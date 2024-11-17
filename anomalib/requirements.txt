@@ -3,3 +3,7 @@ opencv-python
 imgaug
 torchvision
 numpy==1.26.4
+kornia
+pandas
+scikit-learn
+openvino
