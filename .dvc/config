@@ -1,2 +1,6 @@
 [core]
     autostage = true
+    remote = minio
+['remote "minio"']
+    url = s3://dvc/blobs
+    endpointurl = http://s3.orangebox.cloud:9000
