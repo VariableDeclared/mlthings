@@ -1,0 +1,3 @@
+[submodule "PaDiM-Anomaly-Detection-Localization-master"]
+	path = PaDiM-Anomaly-Detection-Localization-master
+	url = git@github.com:VariableDeclared/PaDiM-Anomaly-Detection-Localization-master.git
