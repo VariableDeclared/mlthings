@@ -1,6 +1,9 @@
 [core]
     autostage = true
-    remote = minio
+    remote = 172.16.2.2:8010
 ['remote "minio"']
     url = s3://dvc/blobs
     endpointurl = http://s3.orangebox.cloud:9000
+['remote "s3nas"']
+    url = s3://mlmodels
+    endpointurl = http://172.16.2.2:8010
