@@ -1,0 +1,46 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: qwen-25
+  namespace: default
+spec:
+  predictor:
+    containers:
+    - args:
+      - --port
+      - "8080"
+      - --model
+      - deepseek-ai/DeepSeek-V2
+      - --device
+      - cuda
+      - --gpu-memory-utilization
+      - "1.0"
+      - --max-num-seqs
+      - "1"
+      - --max-model-len
+      - "1"
+      - --enable-prefix-caching
+      - --trust-remote-code
+      - --dtype
+      - "half"
+      command:
+      - python3
+      - -m
+      - vllm.entrypoints.openai.api_server
+      env:
+      - name: CUDA_VERSION
+        value: 12.16.0
+      - name: LD_LIBRARY_PATH
+        value: /usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda-12.16/compat
+      image: vllm/vllm-openai:v0.7.0
+      name: kserve-container
+      resources:
+        limits:
+          cpu: "4"
+          memory: 16Gi
+          nvidia.com/gpu: "1"
+        requests:
+          cpu: "4"
+          memory: 16Gi
+          nvidia.com/gpu: "1"
+

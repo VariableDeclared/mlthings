@@ -1,0 +1,28 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: huggingface-qwen
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: huggingface
+      args:
+        - --model_name=Qwen2.5-VL-7B-Instruct
+        - --model_id=Qwen/Qwen2.5-VL-7B-Instruct
+      env:
+        - name: HF_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: hf-secret
+              key: HF_TOKEN
+              optional: false
+      resources:
+        limits:
+          cpu: "6"
+          memory: 24Gi
+          nvidia.com/gpu: "1"
+        requests:
+          cpu: "6"
+          memory: 24Gi
+          nvidia.com/gpu: "1"

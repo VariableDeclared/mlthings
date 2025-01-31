@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hf-secret
+type: Opaque
+data:
+  HF_TOKEN: aGZfTFJ0YU95aEVxUlVCWGFVQ1JmalhvdUNoeGR1eFdlaUFuZgo=
